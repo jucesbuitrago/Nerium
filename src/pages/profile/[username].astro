@@ -1,0 +1,131 @@
+---
+import IconBookMark from "../../components/icons/IconBookMark.astro";
+import IconPost from "../../components/icons/IconPost.astro";
+import IconSetting from "../../components/icons/IconSetting.astro";
+import IconVideo from "../../components/icons/IconVideo.astro";
+import AppLayout from "../../layouts/AppLayout.astro";
+
+const anim = {
+    old: {
+        name: "bump",
+        duration: "0.5s",
+        easing: "ease-in",
+        direction: "reverse",
+    },
+    new: {
+        name: "bump",
+        duration: "0.5s",
+        easing: "ease-in-out",
+    },
+};
+
+const customTransition = {
+    forwards: anim,
+    backwards: anim,
+};
+---
+
+<AppLayout title="FarfetchDev" description="Perfil de Farfetchdev">
+    <main class="w-full h-full p-3 overflow-y-auto">
+        <div class="flex gap-3 items-center">
+            <img
+                src="https://avatars.githubusercontent.com/u/1000000"
+                alt="FarfetchDev"
+                class="w-20 h-20 rounded-full"
+            />
+            <div>
+                <div class="flex gap-2">
+                    <h2>FarfetchDev</h2>
+                    <button>
+                        <IconSetting />
+                    </button>
+                </div>
+                <div>
+                    <button>Follow</button>
+                    <button>Seguir</button>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <h3>FarfetchDev</h3>
+            <p>Full Stack Developer</p>
+        </div>
+        <div id="history" class="my-3 flex gap-2">
+            <div class="flex flex-col items-center">
+                <button class="rounded-full w-24 h-24 border">
+                    <span class="text-3xl">+</span>
+                </button>
+                <span>New</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <img
+                    src="https://placehold.co/200"
+                    alt=""
+                    class="rounded-full h-24 w-24"
+                />
+                <span>Name</span>
+            </div>
+        </div>
+        <div class="flex justify-center border-y border-y-gray-400">
+            <div
+                class="flex flex-col items-center p-2 border-b-gray-100 border-b-2 w-full"
+            >
+                <span>8</span>
+                <p>Publicaciones</p>
+            </div>
+            <div class="flex flex-col items-center w-full">
+                <span>8</span>
+                <p>Publicaciones</p>
+            </div>
+            <div class="flex flex-col items-center w-full">
+                <span>8</span>
+                <p>Publicaciones</p>
+            </div>
+        </div>
+        <div id="posts">
+            <div id="filter" class="flex justify-center mb-1">
+                <button class="w-full flex flex-col items-center p-2">
+                    <IconPost className="w-6 h-6" />
+                    <span class="hidden md:block">Posts</span>
+                </button>
+                <button class="w-full flex flex-col items-center p-2">
+                    <IconVideo className="w-6 h-6" />
+                    <span class="hidden md:block">Reels</span>
+                </button>
+                <button class="w-full flex flex-col items-center p-2">
+                    <IconBookMark className="w-6 h-6" />
+                    <span class="hidden md:block">BookMark</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 md:grid-cols-5 gap-1">
+                <div transition:name="post 123" class="aspect-square">
+                    <a href="/post/123">
+                        <img
+                            src="https://placehold.co/200"
+                            alt=""
+                            class="h-full w-full object-cover"
+                        />
+                    </a>
+                </div>
+                <div>
+                    <a href="/post/123">
+                        <img
+                            src="https://placehold.co/200"
+                            alt=""
+                            class="h-full w-full object-cover"
+                        />
+                    </a>
+                </div>
+                <div>
+                    <a href="/post/123">
+                        <img
+                            src="https://placehold.co/200"
+                            alt=""
+                            class="h-full w-full object-cover"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</AppLayout>

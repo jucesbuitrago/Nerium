@@ -1,0 +1,74 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Nav from "../components/Nav.astro";
+
+interface Animation {
+    name: string;
+    duration: string;
+    easing: string;
+    direction?: string;
+}
+
+interface CustomTransition {
+    forwards: {
+        old: Animation;
+        new: Animation;
+    };
+    backwards: {
+        old: Animation;
+        new: Animation;
+    };
+}
+interface Props {
+    title: string;
+    description: string;
+    customTransition?: CustomTransition;
+}
+
+const { title, description, customTransition } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+        <ViewTransitions fallback="none" />
+        <meta name="description" content="{description}" />
+    </head>
+    <body class="bg-slate-800 text-gray-100 h-dvh w-dvw overflow-hidden">
+        <div class="h-full w-full flex flex-col-reverse md:flex-row">
+            <Nav />
+            <slot />
+            <aside
+                id="suggest"
+                class="hidden w-1/5 md:flex p-3 md:border-l md:border-l-gray-400"
+            >
+                suggest
+            </aside>
+        </div>
+    </body>
+</html>
+<style is:global>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    @keyframes bump {
+        0% {
+            opacity: 0;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>

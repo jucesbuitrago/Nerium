@@ -1,0 +1,32 @@
+---
+import { MENU_NAVIGATION } from "../data/menuLinks";
+---
+
+<nav
+    id="nav"
+    class="md:w-1/5 p-3 max-sm:border-t max-sm:border-t-gray-400 md:border-r md:border-r-gray-400"
+>
+    <ul class="flex md:flex-col gap-2 justify-center max-sm:items-end">
+        {
+            MENU_NAVIGATION.map((item) => (
+                <li
+                    class="text-white
+                p-2
+                rounded-sm"
+                >
+                    <a
+                        href={
+                            item.url === "/profile"
+                                ? "/profile/farfetchdev"
+                                : item.url
+                        }
+                        class="flex items-center gap-2 h-6 w-6 hover:text-blue-500"
+                    >
+                        <item.icon className="min-w-6 w-full h-full" />
+                        <span class="hidden md:flex">{item.title}</span>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>

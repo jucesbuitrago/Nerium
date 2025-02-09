@@ -1,0 +1,61 @@
+---
+import IconBookMark from "../../components/icons/IconBookMark.astro";
+import IconHeart from "../../components/icons/IconHeart.astro";
+import IconVideo from "../../components/icons/IconVideo.astro";
+import AppLayout from "../../layouts/AppLayout.astro";
+const anim = {
+    old: {
+        name: "bump",
+        duration: "0.5s",
+        easing: "ease-in",
+        direction: "reverse",
+    },
+    new: {
+        name: "bump",
+        duration: "0.5s",
+        easing: "ease-in-out",
+    },
+};
+
+const customTransition = {
+    forwards: anim,
+    backwards: anim,
+};
+---
+
+<AppLayout
+    title="Post123"
+    description="My Post 123"
+    customTransition={customTransition}
+>
+    <main class="w-full h-full p-3 overflow-y-auto">
+        <div
+            class="flex w-full h-fit md:w-1/2 md:mx-auto justify-center"
+            transition:animate={customTransition}
+            transition:name="post 123"
+        >
+            <img
+                src="https://placehold.co/400x400"
+                alt=""
+                class="w-full h-full"
+            />
+        </div>
+        <div class="flex flex-col w-full mb-1 md:w-1/2 md:mx-auto">
+            <div class="flex justify-around">
+                <button class="flex flex-col items-center p-2">
+                    <IconHeart className="w-6 h-6" fill />
+                    <span class="hidden md:block">Posts</span>
+                </button>
+                <button class="flex flex-col items-center p-2">
+                    <IconVideo className="w-6 h-6" />
+                    <span class="hidden md:block">Comments</span>
+                </button>
+                <button class="flex flex-col items-center p-2">
+                    <IconBookMark className="w-6 h-6" />
+                    <span class="hidden md:block">BookMark</span>
+                </button>
+            </div>
+            <div id="comments-container"></div>
+        </div>
+    </main>
+</AppLayout>
